@@ -1,0 +1,505 @@
+<html>
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="js/underscore-min.js" type="text/javascript"> </script>
+	<link rel="stylesheet" href="css/coChoice_draft.css">
+	
+</head>
+
+<body>
+
+
+		<div class="slide" id="start">
+	  		
+	  		<p class="block-text">
+	  			Welcome to the experiment! We are interested in studying how groups of individuals make decisions. This study involves answering questions about yourself and making decisions.
+			</p>
+
+	  		<p class="block-text">
+				Please note that you will be compensated for completing this HIT only <b><u>ONCE.</b></u> You will <b><u>NOT</b></u> be paid for additional HITs.
+			</p>
+	  		
+	  		<p class="block-text">
+	  			There are two parts to this study. Today you will complete the first part, which involves answering questions about yourself.<br><br>
+
+				Tomorrow, you will receive a link to the HIT for part two of the study through mTurk. <br><br>
+				You must complete part two during the following time window: 10am-2pm, Eastern Standard Time. <br>
+
+	  		<button type="button" id ="next" onclick="this.blur(); showSlide('Consent')">Continue</button>
+	 
+	    </div>	
+
+    	<div class="slide" id="Consent">
+
+			<p class="block-text"> 
+				<b>Consent Form </b> <br><br>
+
+				You are invited to participate in a study that is being conducted by Dr. William Cunningham of the Psychology Department at the University of Toronto. Your participation is entirely voluntary. You may stop the study at any time and you have the right to refuse to answer any question without penalty. Anyone who withdraws from the study prior to its completion or asks to have their responses deleted will still receive compensation.<br><br>
+
+				NOTE: To participate in our study, you must be at least 18 years of age and have corrected-to-normal vision.<br><br>
+
+				By selecting to continue below, you indicate that you understand, and agree with, the following points:<br><br>
+
+				1) The purpose of this research is to examine people’s judgments, decisions, evaluations, and recall of affective stimuli.<br><br>
+
+				2) The procedure will be as follows: During a single session lasting around 30 minutes, you will be asked to make evaluations and decisions regarding stimuli in a computerized task. The task may involve the following: making decisions between competing goals in your environment, making decisions or evaluations regarding visual stimuli, or participating in a computer-based task measuring higher cognitive functioning. You may also be asked to complete a set of personality questionnaires depending on the research questions of the study in which you are participating.<br><br>
+
+				3) There is no risk in this study.<br><br>
+
+				4) The benefits of participating in this study are: (a) greater understanding of social and cognitive psychological research, (b) compensation of up to $4.50 ($1.50 base rate, and the potential to earn up to an additional $3.00 depending on the participant's performance).<br><br>
+
+				5) The data you provide will be confidential and will not be released in any individually identifiable form. Data will be available to Dr. Cunningham and other researchers. All data and analyses will be coded by participant number rather than by name. Data will be stored in a locked and secure location.<br><br>
+
+				6) The results of this research may be published in a scholarly publication and/or reported in a scientific presentation, in which case, the identity of all participants will remain fully confidential.<br><br>
+
+				7) If you have any questions or concerns, the researchers will be happy to address them. Please email manager.cunningham@gmail.com.<br><br>
+
+				8) Upon completion of the study, you will receive a full written explanation of the rationale and predictions underlying this study. <br><br>
+
+				9) If you are interested in receiving feedback about the study results, please contact the researchers at manager.cunningham@gmail.com. However, please note that we will only provide aggregated data (group means), not individualized results.<br><br>
+
+				10) If you have questions about your rights as a research participant, or would like to speak with someone not directly involved in the study, please feel free to contact the Office of Research Ethics (ethics.review@utoronto.ca, 416-946-3273). We encourage you to save or print a copy of this consent form for your records. <br><br>
+
+				11) Please note that the Human Research Ethics Program may have confidential access to data to help ensure that participant protection procedures are followed.<br><br>
+
+				12) In rare cases, participants may find some of the stimuli included in the studies to be emotionally evocative or uncomfortable. If you are concerned about the nature of the content in this study, you may contact the Office of Research Ethics at the University of Toronto by telephoning (416) 946-3273 or by sending email to ethics.review@utoronto.ca. 
+
+			</p>	
+						
+			<p class="block-text"> 
+					<input type="radio" name="consent" value="1">I consent to participate in this study.<br>
+					<input type="radio" name="consent" value="0">I do NOT consent to participate in this study.<br>
+			</p>
+
+	  		<button type="button" id ="next" onclick="this.blur(); if (ValidateConsent()) {showSlide('Demographics')}">Continue</button>
+
+		</div>
+
+		<div class="slide" id="Demographics">
+				<p class="block-text"> 
+					<b>Please enter your MTurk Worker ID.</b><br>
+					<input type="text" name="mTurkID" id="mTurkID" minlength="4" maxlength="10">
+				<p class="block-text"> 
+					<b>Please indicate your gender</b><br>
+					<input type="radio" name="gender" value="1">Male<br>
+					<input type="radio" name="gender" value="2">Female<br>
+					<input type="radio" name="gender" value="3">Other<br>
+				</p>
+				<p class="block-text"> 
+					<b>Please enter your age</b><br>
+					<input type="number" name="age" id="age" min="1" max="100" placeholder=' '>
+				</p>
+				<p class="block-text"> 
+					<br>Please enter your race/ethnic affiliation. Check all that apply</b><br>
+					<input type="checkbox" name="ethnicity" value="1">Indigenous<br>
+					<input type="checkbox" name="ethnicity" value="2">East Asian<br>
+					<input type="checkbox" name="ethnicity" value="3">South Asian<br>
+					<input type="checkbox" name="ethnicity" value="4">Black or African<br>
+					<input type="checkbox" name="ethnicity" value="5">White or Caucasian<br>
+					<input type="checkbox" name="ethnicity" value="6">Hispanic or Latino<br>
+					<input type="checkbox" name="ethnicity" value="7">Middle Eastern<br>
+					<input type="checkbox" name="ethnicity" value="8">Choose not to disclose<br>
+				</p>
+
+	  		<button type="button" id ="next" onclick="this.blur(); if (ValidateDemo()) {questionSection.START()}">Continue</button>
+
+		</div>
+		<div class="slide" id="BISBAS_A">
+
+			<form>
+
+				<p class="block-text"> 
+					Here are a number of characteristics that may or may not apply to you. Please indicate the extent to which you agree or disagree with each statement.
+				</p>
+
+				<p class="block-text"> 
+					<b>A person's family is the most important thing in life.</b><br>
+					<input type="radio" name="bisbas_1" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_1" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_1" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_1" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>Even if something bad is about to happen to me, I rarely experience fear or nervousness.</b><br>
+					<input type="radio" name="bisbas_2" value="4">Very true for me<br>
+					<input type="radio" name="bisbas_2" value="3">Somewhat true for me<br>
+					<input type="radio" name="bisbas_2" value="2">Somewhat false for me<br>
+					<input type="radio" name="bisbas_2" value="1">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I go out of my way to get things that I want.</b><br>
+					<input type="radio" name="bisbas_3" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_3" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_3" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_3" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>When I'm doing well at something I love to keep at it.</b><br>
+					<input type="radio" name="bisbas_4" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_4" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_4" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_4" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I'm always willing to try something new if I think it will be fun.</b><br>
+					<input type="radio" name="bisbas_5" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_5" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_5" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_5" value="4">Very false for me<br>
+				</p>
+
+            </form>
+            <center>
+            <button type="button" onclick="this.blur(); if (ValidateBISBAS_A()) {questionSection.BISBAS_A()}">Continue</button>
+            </center>
+		</div>
+
+		<div class="slide" id="BISBAS_B">
+
+			<form>
+				<p class="block-text"> 
+					Here are a number of characteristics that may or may not apply to you. Please indicate the extent to which you agree or disagree with each statement.
+				</p>
+
+				<p class="block-text"> 
+					<b>How I dress is important to me.</b><br>
+					<input type="radio" name="bisbas_6" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_6" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_6" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_6" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>When I get something I want, I feel excited and energized.</b><br>
+					<input type="radio" name="bisbas_7" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_7" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_7" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_7" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>Criticism or scolding hurts me quite a bit.</b><br>
+					<input type="radio" name="bisbas_8" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_8" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_8" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_8" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>When I want something I usually go all-out to get it.</b><br>
+					<input type="radio" name="bisbas_9" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_9" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_9" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_9" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I will often do things for no other reason than that they might be fun.</b><br>
+					<input type="radio" name="bisbas_10" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_10" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_10" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_10" value="4">Very false for me<br>
+				</p>
+
+            </form>
+            <center>
+            <button type="button" onclick="this.blur(); if (ValidateBISBAS_B()) {questionSection.BISBAS_B()}">Continue</button>
+            </center>
+		</div>
+
+
+		<div class="slide" id="BISBAS_C">
+
+			<form>
+
+				<p class="block-text"> 
+					Here are a number of characteristics that may or may not apply to you. Please indicate the extent to which you agree or disagree with each statement.
+				</p>
+
+				<p class="block-text"> 
+					<b>It's hard for me to find the time to do things such as get a haircut.</b><br>
+					<input type="radio" name="bisbas_11" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_11" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_11" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_11" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>If I see a chance to get something I want I move on it right away.</b><br>
+					<input type="radio" name="bisbas_12" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_12" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_12" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_12" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I feel pretty worried or upset when I think or know somebody is angry with me.</b><br>
+					<input type="radio" name="bisbas_13" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_13" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_13" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_13" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>When I see an opportunity for something I like I get excited right away.</b><br>
+					<input type="radio" name="bisbas_14" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_14" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_14" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_14" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I often act on the spur of the moment.</b><br>
+					<input type="radio" name="bisbas_15" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_15" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_15" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_15" value="4">Very false for me<br>
+				</p>
+
+            </form>
+            <center>
+            <button type="button" onclick="this.blur(); if (ValidateBISBAS_C()) {questionSection.BISBAS_C()}">Continue</button>
+            </center>
+        </div>
+
+
+		<div class="slide" id="BISBAS_D">
+
+			<form>
+
+				<p class="block-text"> 
+					Here are a number of characteristics that may or may not apply to you. Please indicate the extent to which you agree or disagree with each statement.
+				</p>
+
+				<p class="block-text"> 
+					<b>If I think something unpleasant is going to happen I usually get 'pretty worked up'.</b><br>
+					<input type="radio" name="bisbas_16" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_16" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_16" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_16" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I often wonder why people act the way they do.</b><br>
+					<input type="radio" name="bisbas_17" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_17" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_17" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_17" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>When good things happen to me, it affects me strongly.</b><br>
+					<input type="radio" name="bisbas_18" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_18" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_18" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_18" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I feel worried when I think I have done poorly at something important.</b><br>
+					<input type="radio" name="bisbas_19" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_19" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_19" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_19" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I crave excitement and new sensations.</b><br>
+					<input type="radio" name="bisbas_20" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_20" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_20" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_20" value="4">Very false for me<br>
+				</p>
+
+            </form>
+            <center>
+            <button type="button" onclick="this.blur(); if (ValidateBISBAS_D()) {questionSection.BISBAS_D()}">Continue</button>
+            </center>
+		</div>
+
+		<div class="slide" id="BISBAS_E">
+
+			<form>
+
+				<p class="block-text"> 
+					Here are a number of characteristics that may or may not apply to you. Please indicate the extent to which you agree or disagree with each statement.
+				</p>
+
+				<p class="block-text"> 
+					<b>When I go after something I use a 'no holds barred' approach.</b><br>
+					<input type="radio" name="bisbas_21" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_21" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_21" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_21" value="4">Very false for me<br>
+				</p>	
+
+				<p class="block-text"> 
+					<b>I have very few fears compared to my friends.</b><br>
+					<input type="radio" name="bisbas_22" value="4">Very true for me<br>
+					<input type="radio" name="bisbas_22" value="3">Somewhat true for me<br>
+					<input type="radio" name="bisbas_22" value="2">Somewhat false for me<br>
+					<input type="radio" name="bisbas_22" value="1">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>It would excite me to win a contest.</b><br>
+					<input type="radio" name="bisbas_23" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_23" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_23" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_23" value="4">Very false for me<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I worry about making mistakes.</b><br>
+					<input type="radio" name="bisbas_24" value="1">Very true for me<br>
+					<input type="radio" name="bisbas_24" value="2">Somewhat true for me<br>
+					<input type="radio" name="bisbas_24" value="3">Somewhat false for me<br>
+					<input type="radio" name="bisbas_24" value="4">Very false for me<br>
+				</p>
+
+            </form>
+            <center>
+            <button type="button" onclick="this.blur(); if (ValidateBISBAS_E()) {questionSection.BISBAS_E()}">Continue</button>
+            </center>
+
+    	</div>	
+
+    	<div class="slide" id="BFI_A">
+
+			<p class="block-text"> 
+				Here are a number of characteristics that may or may not apply to you. Please indicate the extent to which you agree or disagree with each statement.
+			</p>
+
+			<form>
+
+				<p class="block-text"> 
+					<b>I am someone who is talkative.</b><br>
+					<input type="radio" name="bfi_e1" value="1">Strongly Disagree<br>
+					<input type="radio" name="bfi_e1" value="2">Disagree<br>
+					<input type="radio" name="bfi_e1" value="3">Neither Agree nor Disagree<br>
+					<input type="radio" name="bfi_e1" value="4">Agree<br>
+					<input type="radio" name="bfi_e1" value="5">Strongly Agree<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I am someone who is reserved.</b><br>
+					<input type="radio" name="bfi_e6" value="5">Strongly Disagree<br>
+					<input type="radio" name="bfi_e6" value="4">Disagree<br>
+					<input type="radio" name="bfi_e6" value="3">Neither Agree nor Disagree<br>
+					<input type="radio" name="bfi_e6" value="2">Agree<br>
+					<input type="radio" name="bfi_e6" value="1">Strongly Agree<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I am someone who is full of energy.</b><br>
+					<input type="radio" name="bfi_e11" value="1">Strongly Disagree<br>
+					<input type="radio" name="bfi_e11" value="2">Disagree<br>
+					<input type="radio" name="bfi_e11" value="3">Neither Agree nor Disagree<br>
+					<input type="radio" name="bfi_e11" value="4">Agree<br>
+					<input type="radio" name="bfi_e11" value="5">Strongly Agree<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I am someone who generates a lot of enthusiasm.</b><br>
+					<input type="radio" name="bfi_e16" value="1">Strongly Disagree<br>
+					<input type="radio" name="bfi_e16" value="2">Disagree<br>
+					<input type="radio" name="bfi_e16" value="3">Neither Agree nor Disagree<br>
+					<input type="radio" name="bfi_e16" value="4">Agree<br>
+					<input type="radio" name="bfi_e16" value="5">Strongly Agree<br>
+				</p>
+
+            </form>
+            <center>
+            <button type="button" onclick="this.blur();if (ValidateBFI_A()) {questionSection.BFI_A()}">Continue</button>
+            </center>
+        </div>
+
+   		<div class="slide" id="BFI_B">
+
+				<p class="block-text"> 
+
+				Here are a number of characteristics that may or may not apply to you. Please indicate the extent to which you agree or disagree with each statement.
+				</p>
+
+				<form>
+				<p class="block-text"> 
+					<b>I am someone who tends to be quiet.</b><br>
+					<input type="radio" name="bfi_e21" value="5">Strongly Disagree<br>
+					<input type="radio" name="bfi_e21" value="4">Disagree<br>
+					<input type="radio" name="bfi_e21" value="3">Neither Agree nor Disagree<br>
+					<input type="radio" name="bfi_e21" value="2">Agree<br>
+					<input type="radio" name="bfi_e21" value="1">Strongly Agree<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I am someone who has an assertive personality.</b><br>
+					<input type="radio" name="bfi_e26" value="1">Strongly Disagree<br>
+					<input type="radio" name="bfi_e26" value="2">Disagree<br>
+					<input type="radio" name="bfi_e26" value="3">Neither Agree nor Disagree<br>
+					<input type="radio" name="bfi_e26" value="4">Agree<br>
+					<input type="radio" name="bfi_e26" value="5">Strongly Agree<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I am someone who is sometimes shy, inhibited.</b><br>
+					<input type="radio" name="bfi_e31" value="5">Strongly Disagree<br>
+					<input type="radio" name="bfi_e31" value="4">Disagree<br>
+					<input type="radio" name="bfi_e31" value="3">Neither Agree nor Disagree<br>
+					<input type="radio" name="bfi_e31" value="2">Agree<br>
+					<input type="radio" name="bfi_e31" value="1">Strongly Agree<br>
+				</p>
+
+				<p class="block-text"> 
+					<b>I am someone who is outgoing, sociable.</b><br>
+					<input type="radio" name="bfi_e36" value="1">Strongly Disagree<br>
+					<input type="radio" name="bfi_e36" value="2">Disagree<br>
+					<input type="radio" name="bfi_e36" value="3">Neither Agree nor Disagree<br>
+					<input type="radio" name="bfi_e36" value="4">Agree<br>
+					<input type="radio" name="bfi_e36" value="5">Strongly Agree<br>
+				</p>
+
+            </form>
+            <center>
+            <button type="button" onclick="this.blur();if (ValidateBFI_B()) {questionSection.BFI_B()}">Continue</button>
+            </center>
+        </div>
+
+
+		<div class="slide" id="Complete">
+
+			<form>
+
+			<p class="block-text"> 
+				Thank you very much for participating in part 1 of the study. You will be sent an email through mTurk linking you to the HIT tomorrow morning.
+				Please check your inbox for the link. You must complete part 2 between 10am and 2pm E.S.T. in order to receive the full HIT. 
+			</p>
+			
+			</form>
+  			<center>
+  			<button type="button" onclick="this.blur(); questionSection.end()">Continue</button>
+  			</center>
+		</div>
+
+		<div class="slide" id="Thankyou">
+
+			<form>
+
+			<p class="block-text"> 
+				Your participation is greatly appreciated. Thank you.
+			</p>
+
+			</form>
+  			<center>
+  			<button type="button" onclick="this.blur();">Continue</button>
+  			</center>
+		</div>
+
+	<script src="js/QuestionnairePhase.js"></script>
+</body>
+
+</html>
